@@ -127,7 +127,7 @@
                         </Button.Template>
                     </Button>
 
-                    <TextBlock x:Name="ErrorTextBlock" Foreground="Red" Visibility="Collapsed" />
+                   
                 </Grid>
 
                 <StackPanel Width="220"
@@ -262,6 +262,14 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
+                    <Grid>
+                        <TextBlock x:Name="ErrorTextBlock"
+               Foreground="Red"
+               Visibility="Collapsed"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               TextAlignment="Center" />
+                    </Grid>
 
 
                 </StackPanel>

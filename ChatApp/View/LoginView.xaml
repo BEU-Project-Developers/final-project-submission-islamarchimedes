@@ -137,14 +137,14 @@
                     <Image Source="/Images/Logo.png"
                            Width="100" Height="100"/>
 
-                    <TextBlock Text="RJ CODE"
+                    <TextBlock Text="Login"
                                Foreground="White"
                                FontSize="25"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                HorizontalAlignment="Center"/>
 
-                    <TextBlock Text="Learning to code is useful no matter what your career ambitions are."
+                    <TextBlock Text="Login use credentials"
                                Foreground="LightGray"
                                FontSize="12"
                                FontWeight="Medium"
@@ -283,8 +283,14 @@
                         </Button.Template>
                     </Button>
 
-                    <TextBlock x:Name="ErrorTextBlock" Foreground="Red" Visibility="Collapsed" />
-
+                    <Grid>
+                        <TextBlock x:Name="ErrorTextBlock"
+Foreground="Red"
+Visibility="Collapsed"
+HorizontalAlignment="Center"
+VerticalAlignment="Center"
+TextAlignment="Center" />
+                    </Grid>
                     <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Center"
                                 Margin="0,15,0,0">

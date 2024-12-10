@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using ChatApp.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace ChatApp.Services
 {
@@ -13,6 +14,24 @@ namespace ChatApp.Services
         {
             _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager), "UserManager cannot be null.");
         }
+
+        public async Task<ICollection<AppUser>> GetAppUsersAsync()
+        {
+            try
+            {
+                
+                return await _userManager.Users.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                
+                Console.Error.WriteLine($"Error retrieving users: {ex.Message}");
+
+              
+                return new List<AppUser>();
+            }
+        }
+
 
         // Custom Login method with enhanced error handling
         public async Task<bool> LoginAsync(string username, string password)

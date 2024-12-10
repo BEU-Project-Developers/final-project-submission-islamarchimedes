@@ -9,6 +9,9 @@ namespace ChatApp.Model
 {
     public class AppUser : IdentityUser
     {
+        public List<ChatModel> Chats { get; set; }
+        public string? PofilePicture { get; set; }
+        public List<MessageModel> Messages { get; set; }
        
 
     }

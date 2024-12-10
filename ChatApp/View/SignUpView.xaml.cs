@@ -56,7 +56,7 @@ namespace WPF_LoginForm.View
             string password = txtPass.Password;
             string confirmPassword = txtConfirmPass.Password;
 
-            
+            ErrorTextBlock.Text = string.Empty;
             ErrorTextBlock.Visibility = Visibility.Hidden;
 
             // Disable the sign-up button and show loading indicator
@@ -68,12 +68,14 @@ namespace WPF_LoginForm.View
                 string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword))
             {
                 ShowError("Please fill in all fields.");
+             
                 return;
             }
 
             if (password != confirmPassword)
             {
                 ShowError("Passwords do not match.");
+              
                 return;
             }
 
@@ -115,6 +117,7 @@ namespace WPF_LoginForm.View
             ErrorTextBlock.Text = message;
             ErrorTextBlock.Visibility = Visibility.Visible;
             ErrorTextBlock.Foreground = new SolidColorBrush(Colors.Red);
+            btnSignUp.IsEnabled = true;
         }
 
        

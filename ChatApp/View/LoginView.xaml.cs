@@ -6,6 +6,7 @@ using System.Windows.Input;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using Microsoft.Extensions.DependencyInjection;
+using ChatApp.View;
 
 namespace WPF_LoginForm.View
 {
@@ -75,8 +76,8 @@ namespace WPF_LoginForm.View
                 if (result)
                 {
                     // Navigate to the main window on successful login
-                    var mainWindow = new MainWindow();
-                    mainWindow.Show();
+                    var chatView = App.AppHost!.Services.GetRequiredService<ChatView>();
+                    chatView.Show();
                     this.Close();
                 }
                 else

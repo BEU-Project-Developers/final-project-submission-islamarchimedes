@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\MAN\Desktop\elearning_backend\src\ChatApp\ChatApp\App.xaml
-3-863186364
+736458153
 
-12-1555552638
+31-1461650086
 367-860156710
-MainWindow.xaml;View\LoginView.xaml;View\SignUpView.xaml;
+MainWindow.xaml;Themes\ChatItem.xaml;Themes\ContactCard.xaml;Themes\MessageBox.xaml;View\ChatView.xaml;View\LoginView.xaml;View\SignUpView.xaml;
 
 False
 

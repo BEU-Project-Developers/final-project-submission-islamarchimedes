@@ -154,3 +154,10 @@ C:\Users\MAN\Desktop\elearning_backend\src\ChatApp\ChatApp\bin\Debug\net8.0-wind
 C:\Users\MAN\Desktop\elearning_backend\src\ChatApp\ChatApp\bin\Debug\net8.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 C:\Users\MAN\Desktop\elearning_backend\src\ChatApp\ChatApp\obj\Debug\net8.0-windows\ChatApp.csproj.AssemblyReference.cache
 C:\Users\MAN\Desktop\elearning_backend\src\ChatApp\ChatApp\obj\Debug\net8.0-windows\ChatApp.csproj.CopyComplete
+C:\Users\MAN\Desktop\elearning_backend\src\ChatApp\ChatApp\obj\Debug\net8.0-windows\ChatApp.sourcelink.json
+C:\Users\MAN\Desktop\elearning_backend\src\ChatApp\ChatApp\obj\Debug\net8.0-windows\View\ChatView.baml
+C:\Users\MAN\Desktop\elearning_backend\src\ChatApp\ChatApp\obj\Debug\net8.0-windows\View\ChatView.g.cs
+C:\Users\MAN\Desktop\elearning_backend\src\ChatApp\ChatApp\obj\Debug\net8.0-windows\Themes\ContactCard.baml
+C:\Users\MAN\Desktop\elearning_backend\src\ChatApp\ChatApp\obj\Debug\net8.0-windows\App.baml
+C:\Users\MAN\Desktop\elearning_backend\src\ChatApp\ChatApp\obj\Debug\net8.0-windows\Themes\ChatItem.baml
+C:\Users\MAN\Desktop\elearning_backend\src\ChatApp\ChatApp\obj\Debug\net8.0-windows\Themes\MessageBox.baml
