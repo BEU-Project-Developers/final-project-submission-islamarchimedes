@@ -161,3 +161,5 @@ C:\Users\MAN\Desktop\elearning_backend\src\ChatApp\ChatApp\obj\Debug\net8.0-wind
 C:\Users\MAN\Desktop\elearning_backend\src\ChatApp\ChatApp\obj\Debug\net8.0-windows\App.baml
 C:\Users\MAN\Desktop\elearning_backend\src\ChatApp\ChatApp\obj\Debug\net8.0-windows\Themes\ChatItem.baml
 C:\Users\MAN\Desktop\elearning_backend\src\ChatApp\ChatApp\obj\Debug\net8.0-windows\Themes\MessageBox.baml
+C:\Users\MAN\Desktop\elearning_backend\src\ChatApp\ChatApp\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\MAN\Desktop\elearning_backend\src\ChatApp\ChatApp\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs

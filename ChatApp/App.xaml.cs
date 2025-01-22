@@ -40,6 +40,7 @@ namespace ChatApp
                     .AddEntityFrameworkStores<ApplicationDbContext>();
 
                     // Add Services
+                    services.AddHttpContextAccessor();
                     services.AddTransient<AuthService>();
                     services.AddTransient<ChatService>();
                     services.AddTransient<MessageService>();

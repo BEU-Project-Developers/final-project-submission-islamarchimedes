@@ -35,6 +35,20 @@ namespace ChatApp.ViewModel
 
         // Selected Chat
         private ChatModel _selectedChat;
+
+        private AppUser _currentUser;
+        public AppUser CurrentUser
+        {
+            get => _currentUser;
+            set
+            {
+                if (_currentUser != value)
+                {
+                    _currentUser = value;
+                    OnPropertyChanged(nameof(CurrentUser)); // Notify the UI of changes
+                }
+            }
+        }
         public ChatModel SelectedChat
         {
             get => _selectedChat;
@@ -53,13 +67,17 @@ namespace ChatApp.ViewModel
             _messageService = messageService ?? throw new ArgumentNullException(nameof(messageService));
             _appUserService = appUserService ?? throw new ArgumentNullException(nameof(appUserService));
 
+            CurrentUser = AuthService.CurrentUser;
+
+
             Chats = new ObservableCollection<ChatModel>();
             Messages = new ObservableCollection<MessageModel>();
             Users = new ObservableCollection<AppUser>();
 
             // Load Chats
-            //LoadChatsAsync();
-            LoadUsersAsync();
+             LoadChatsAsync();
+            //   LoadUsersAsync();
+           // Task.WhenAll(LoadUsersAsync(), LoadChatsAsync()).ConfigureAwait(false);
         }
 
         private async Task LoadUsersAsync()
@@ -85,6 +103,7 @@ namespace ChatApp.ViewModel
         {
             try
             {
+                
                 var chats = await _chatService.GetAllChatsAsync(); // Replace with actual user ID
                 Chats.Clear();
 

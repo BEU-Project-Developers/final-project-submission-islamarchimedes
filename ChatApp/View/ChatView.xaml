@@ -60,9 +60,14 @@
                    Foreground="Gray"
                    Margin="8,0,0,0"
                    ></Label>
-            <ListView Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Users}"
-              ItemContainerStyle="{StaticResource ContactCard}"
-                      />
+           
+            <ListView Grid.Row="1" 
+          Background="Transparent" 
+          BorderThickness="0" 
+          ItemsSource="{Binding Chats}" 
+          ItemContainerStyle="{StaticResource ContactCard}">
+            </ListView>
+
 
 
 
@@ -77,8 +82,8 @@
         Margin="18,0,0,0" />
 
                 <StackPanel VerticalAlignment="Center">
-                    <Label Content="Username" 
-           Foreground="White" 
+                    <Label Content="{Binding CurrentUser.UserName}"
+                    Foreground="White" 
            FontWeight="SemiBold" 
            Margin="0,-5,0,-5" />
                     <Label Content="Custom Status" 
@@ -134,7 +139,7 @@
              Text="Message @Username"
              Style="{StaticResource MessageBox}"
              Grid.ColumnSpan="2" />
-
+                  <!--bura bax--> 
                 <StackPanel Orientation="Horizontal"
                 HorizontalAlignment="Right"
                 Grid.Column="1"

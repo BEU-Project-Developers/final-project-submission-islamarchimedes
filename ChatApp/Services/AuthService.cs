@@ -3,18 +3,42 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using ChatApp.Model;
 using Microsoft.EntityFrameworkCore;
+using ChatApp.Repositories;
+using Microsoft.AspNetCore.Http;
+
+
+
 
 namespace ChatApp.Services
 {
     public class AuthService
     {
+     
         private readonly UserManager<AppUser> _userManager;
+        private readonly ApplicationDbContext _context;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public static AppUser CurrentUser { get; private set; }
 
-        public AuthService(UserManager<AppUser> userManager)
+        public AuthService(UserManager<AppUser> userManager, ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
         {
             _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager), "UserManager cannot be null.");
+            _context = context ?? throw new ArgumentNullException();
+            _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException();
         }
 
+     
+        public async Task<AppUser> GetCurrentUserAsync()
+        {
+            // HttpContext vasitəsilə daxil olan istifadəçi məlumatını alırıq
+            var user = await _userManager.GetUserAsync(_httpContextAccessor.HttpContext.User);
+
+            if (user != null)
+            {
+                return user;
+            }
+
+            return null;
+        }
         public async Task<ICollection<AppUser>> GetAppUsersAsync()
         {
             try
@@ -55,6 +79,7 @@ namespace ChatApp.Services
                 }
 
                 // Successful login
+                CurrentUser = user;
                 return true;
             }
             catch (ArgumentNullException ex)
@@ -86,6 +111,27 @@ namespace ChatApp.Services
                 if (result.Succeeded)
                 {
                     // Registration succeeded
+                    var existingUsers = _userManager.Users.Where(u => u.Id != user.Id).ToList();
+
+                    // Create chat records between the new user and each existing user
+                    foreach (var existingUser in existingUsers)
+                    {
+                        var chat = new ChatModel
+                        {
+                            Participants = new List<AppUser> { user, existingUser },
+                            Messages = new List<MessageModel>(), // Initialize an empty message list
+                            IsGroup = false, // Single chat between two users
+                            Name = $"{user.UserName} & {existingUser.UserName}", // Optional: Name the chat
+                            CreatedAt = DateTime.UtcNow // Assuming BaseModel has CreatedAt
+                        };
+
+                        // Save the chat to the database
+                        _context.Chats.Add(chat);
+                    };
+
+                    // Save changes to the database
+                    await _context.SaveChangesAsync();
+
                     return (true, null);
                 }
                 else

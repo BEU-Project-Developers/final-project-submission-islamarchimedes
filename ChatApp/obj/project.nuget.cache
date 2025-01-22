@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "czsWajFz1YmISSj/kGTpt6GT4FHtv/d60Ly2+ig5cwKAravJr2A84oYW0fXV00l3dfzy3+YhWrcOV184TzaZQA==",
+  "dgSpecHash": "3F2s3NWEeSgNEcbR4L3L+dUxJl3KdoXYJL2Z+6r2ovGQ2kQFdP24TjQMqk86VmqX1bzctgDRzggh4ZI8xkpd+g==",
   "success": true,
   "projectFilePath": "C:\\Users\\MAN\\Desktop\\elearning_backend\\src\\ChatApp\\ChatApp\\ChatApp.csproj",
   "expectedPackageFiles": [
@@ -75,6 +75,7 @@
     "C:\\Users\\MAN\\.nuget\\packages\\microsoft.web.webview2\\1.0.864.35\\microsoft.web.webview2.1.0.864.35.nupkg.sha512",
     "C:\\Users\\MAN\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\MAN\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\MAN\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\MAN\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\MAN\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\MAN\\.nuget\\packages\\system.composition\\6.0.0\\system.composition.6.0.0.nupkg.sha512",

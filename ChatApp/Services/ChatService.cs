@@ -47,17 +47,30 @@ namespace ChatApp.Services
         {
             try
             {
+                // Get the current user
+                var currentUser = AuthService.CurrentUser;
+
+                if (currentUser == null)
+                {
+                    throw new InvalidOperationException("No current user found.");
+                }
+
+                // Retrieve chats where the current user is a participant
                 return await _context.Chats
                     .Include(c => c.Participants)
+                    .Where(c => c.Participants.Contains(currentUser))
                     .ToListAsync();
             }
             catch (Exception ex)
             {
-                
+                // Log the error (optional)
+                Console.WriteLine($"Error while retrieving chats: {ex.Message}");
+
+                // Rethrow a more specific exception
                 throw new InvalidOperationException("Error while retrieving chats", ex);
             }
         }
-       
+
         public async Task<List<ChatModel>> GetChatsAsync(string userId)
         {
             if (string.IsNullOrEmpty(userId)) throw new ArgumentException("User ID cannot be null or empty", nameof(userId));
