@@ -1,0 +1,248 @@
+﻿@model IEnumerable<PharmaPulseApp.Models.Pharmacy>
+
+@{
+    ViewData["Title"] = "List of Pharmacies";
+}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Medion</title>
+
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700|Roboto:400,700&display=swap" rel="stylesheet">
+
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/css/responsive.css" rel="stylesheet" />
+
+    <style>
+        .pharmacy-image {
+            width: 100%; 
+            max-width: 250px;
+            height: 200px; 
+            object-fit: cover;
+            display: block;
+            margin: auto; 
+        }
+        }
+
+    </style>
+
+</head>
+
+<body class="sub_page">
+    <div class="hero_area">
+
+        <hea<header class="header_section">
+            <div class="container">
+                <div class="top_contact-container">
+                    <div class="tel_container">
+                        <a href="">
+                            <img src="images/telephone-symbol-button.png" alt=""> Call : +994 55 850 57 81
+                        </a>
+                    </div>
+                    <div class="social-container">
+                        <a href="https://www.facebook.com/">
+                            <img src="images/fb.png" alt="" class="s-1">
+                        </a>
+                        <a href="https://x.com/">
+                            <img src="images/twitter.png" alt="" class="s-2">
+                        </a>
+                        <a href="https://www.instagram.com/">
+                            <img src="images/instagram.png" alt="" class="s-3">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                        <img src="images/logo.png" alt="">
+                        <span>
+                            İslamMed
+                        </span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="d-flex  flex-column flex-lg-row align-items-center w-100 justify-content-between">
+                            <ul class="navbar-nav  ">
+
+                                <li class="nav-item active">
+                                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Pharmacy" asp-action="Index"> Pharmacy </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Medicine" asp-action="Index"> Medicine </a>
+                                </li>
+
+                                <li class="nav-item">
+                                     <a class="nav-link" asp-area="" asp-controller="Medicine" asp-action="Store"> Online Buy </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="ContactUs" asp-action="Index">Contact us</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About"> About </a>
+                                </li>
+
+                            </ul>
+
+                           
+                             <form class="form-inline" method="get" action="@Url.Action("DetailsByName", "Pharmacy")">
+                                <input type="search" name="name" placeholder="Search" class="form-control mr-2">
+                                    <button class="btn my-2 my-sm-0 nav_search-btn" type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>                                              
+                             </form>
+
+
+                            <div class="login_btn-contanier ml-0 ml-lg-5">
+                                <a asp-area="" asp-controller="User" asp-action="Login">
+                                    <img src="~/images/user.png" alt="">
+                                    <span>
+                                        Login
+                                    </span>
+                                </a>
+                            </div>
+
+                            <div class="login_btn-contanier ml-0 ml-lg-5">
+                                <a asp-area="" asp-controller="User" asp-action="Register">
+                                    <img src="~/images/user.png" alt="">
+                                    <span>
+                                        Register
+                                    </span>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </nav>
+            </div>
+        </header>
+    </div>
+
+
+   <div class="container mt-5">
+    <h2 class="text-center">@ViewData["Title"]</h2>
+
+    <div class="row mb-3">
+
+        <div class="row search-bar justify-content-end">
+            <div class="col-md-4">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 col-xs-6 border-primary mb-3">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <div class="card-header text-white bg-info">
+                                <h5 class="card-title d-flex justify-content-between">
+                                    @item.Name
+                                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                    {
+                                        <a class="text-white" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                                    }
+                                </h5>
+                            </div>
+                        </div>
+
+                        <div class="col-12 d-flex align-items-center justify-content-center">
+                            <a href="@Url.Action("Details", new { id = item.Id })">
+                                <img src="@item.PharmacyPictureUrl" class="pharmacy-image" alt="@item.Name">
+                            </a>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="card-body">
+                                <p class="card-text"><b>Address: </b>@item.Address</p>
+                                <p class="card-text"><b>Phone: </b>@item.PhoneNumber</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div/div>
+
+
+
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js">
+    </script>
+    <script type="text/javascript">
+        $(".owl-carousel").owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            navText: [],
+            autoplay: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 4
+                }
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        $(".owl-2").owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            navText: [],
+            autoplay: true,
+
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 4
+                }
+            }
+        });
+    </script>
+</body>>

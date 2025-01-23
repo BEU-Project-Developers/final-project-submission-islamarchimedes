@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Not Found";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-info">
+                <div class="card-body">
+                    <h1 class="card-title text-info">No medicine found with the provided criteria</h1>
+                    <p class="card-text">We're sorry, but it seems that there are no medicines matching your search criteria.</p>
+                    <hr />
+                    <a class="btn btn-outline-info" asp-controller="Medicine" asp-action="Index">Back to Home Page</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #e3f2fd;
+    }
+</style>
