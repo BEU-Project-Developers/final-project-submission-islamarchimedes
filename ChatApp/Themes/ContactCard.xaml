@@ -25,14 +25,29 @@
 
                             <!-- User Info -->
                             <StackPanel Margin="10,0,0,0">
-                                <TextBlock Text="{Binding Participants[0].UserName}" 
+                                <TextBlock Text="{Binding Participants[1].UserName}" 
                Foreground="White" 
                FontWeight="Bold"
                                          Margin="0,5,0,0"   />
-                                <TextBlock Text="{Binding Participants[1].UserName}" 
-               Foreground="Gray" 
-               FontSize="10" 
-               Margin="0,5,0,0" />
+                                <Button Content="Select"
+        Command="{Binding DataContext.SelectChatCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+        CommandParameter="{Binding}">
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Setter Property="Padding" Value="1,2" />
+                                            <Setter Property="FontSize" Value="7" />
+                                            <Setter Property="Width" Value="50" />
+                                            <Setter Property="Height" Value="20" />
+                                            <Setter Property="Background" Value="CornflowerBlue" />
+                                            <Setter Property="Foreground" Value="White" />
+                                            <Setter Property="BorderBrush" Value="CornflowerBlue" />
+                                            <Setter Property="BorderThickness" Value="1" />
+                                           
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+
+                               
                             </StackPanel>
 
                         </StackPanel>

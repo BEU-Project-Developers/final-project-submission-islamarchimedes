@@ -58,5 +58,6 @@ namespace ChatApp.View
         {
             Application.Current.Shutdown();
         }
+
     }
 }

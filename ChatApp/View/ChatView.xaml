@@ -11,8 +11,10 @@
         WindowStyle="None"
         AllowsTransparency="True"
         ResizeMode="CanResizeWithGrip"
+
         >
-    
+
+   
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
@@ -60,13 +62,15 @@
                    Foreground="Gray"
                    Margin="8,0,0,0"
                    ></Label>
-           
+
             <ListView Grid.Row="1" 
           Background="Transparent" 
           BorderThickness="0" 
           ItemsSource="{Binding Chats}" 
-          ItemContainerStyle="{StaticResource ContactCard}">
+          ItemContainerStyle="{StaticResource ContactCard}"
+          >
             </ListView>
+
 
 
 
@@ -108,7 +112,7 @@
 
             <Border BorderBrush="#2F3136" BorderThickness="0,0,0,2">
                 <Grid HorizontalAlignment="Stretch" Margin="8">
-                    <Label Content="Username" Foreground="white" FontWeight="Bold" Margin="5,0,5,0" VerticalAlignment="Center">
+                    <Label Content="{Binding SelectedChat.Participants[1].UserName}" Foreground="white" FontWeight="Bold" Margin="5,0,5,0" VerticalAlignment="Center">
                     
                         <!--<StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Right"

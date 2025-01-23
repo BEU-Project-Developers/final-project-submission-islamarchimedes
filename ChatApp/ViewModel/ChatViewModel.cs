@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace ChatApp.ViewModel
 {
-    public class ChatViewModel : ObservableObject
+    public class ChatViewModel : ObservableObject, INotifyPropertyChanged
     {
         // Services
         private readonly ChatService _chatService;
@@ -22,6 +22,8 @@ namespace ChatApp.ViewModel
         public ObservableCollection<MessageModel> Messages { get; set; }
         public ObservableCollection<AppUser> Users { get; set; }
         private string _message;
+        public RelayCommand SelectChatCommand { get; }
+
 
         public string Message
         {
@@ -34,7 +36,8 @@ namespace ChatApp.ViewModel
         }
 
         // Selected Chat
-        private ChatModel _selectedChat;
+        
+
 
         private AppUser _currentUser;
         public AppUser CurrentUser
@@ -45,20 +48,25 @@ namespace ChatApp.ViewModel
                 if (_currentUser != value)
                 {
                     _currentUser = value;
-                    OnPropertyChanged(nameof(CurrentUser)); // Notify the UI of changes
+                    OnPropertyChanged(nameof(CurrentUser)); 
                 }
             }
         }
+        private ChatModel _selectedChat;
         public ChatModel SelectedChat
         {
             get => _selectedChat;
             set
             {
-                _selectedChat = value;
-                OnPropertyChanged(nameof(SelectedChat));
-                LoadMessagesAsync();
+                if (_selectedChat != value)
+                {
+                    _selectedChat = value;
+                    OnPropertyChanged(nameof(SelectedChat));
+                    LoadMessagesAsync();  // Optionally load messages if needed
+                }
             }
         }
+
 
         // Constructor
         public ChatViewModel(ChatService chatService, MessageService messageService, AuthService appUserService)
@@ -68,6 +76,7 @@ namespace ChatApp.ViewModel
             _appUserService = appUserService ?? throw new ArgumentNullException(nameof(appUserService));
 
             CurrentUser = AuthService.CurrentUser;
+            SelectChatCommand = new RelayCommand(param => SelectChat(param));
 
 
             Chats = new ObservableCollection<ChatModel>();
@@ -78,6 +87,14 @@ namespace ChatApp.ViewModel
              LoadChatsAsync();
             //   LoadUsersAsync();
            // Task.WhenAll(LoadUsersAsync(), LoadChatsAsync()).ConfigureAwait(false);
+        }
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        private void SelectChat(object param)
+        {
+            SelectedChat = param as ChatModel;
         }
 
         private async Task LoadUsersAsync()
@@ -187,9 +204,6 @@ namespace ChatApp.ViewModel
         // Property Changed Event
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+     
     }
 }
